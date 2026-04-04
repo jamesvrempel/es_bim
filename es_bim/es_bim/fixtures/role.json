@@ -1,0 +1,14 @@
+[
+  {
+    "doctype": "Role",
+    "name": "BIM Manager",
+    "role_name": "BIM Manager",
+    "desk_access": 1
+  },
+  {
+    "doctype": "Role",
+    "name": "BIM User",
+    "role_name": "BIM User",
+    "desk_access": 1
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "name": "BIM Project",
+  "search_fields": "project_name,client,status",
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "autoname": "naming_series:",
+  "naming_rule": "By \"Naming Series\" field",
+  "title_field": "project_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "description": "ES BIM Project — master record linking a construction or infrastructure project to its BIM models, schedule, and cost data.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "BIM-PRJ-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "project_name",
+      "label": "Project Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Planning\nDesign\nConstruction\nHandover\nOperations\nArchived",
+      "reqd": 1,
+      "default": "Planning",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "bim_level",
+      "label": "BIM Level",
+      "fieldtype": "Select",
+      "options": "Level 1 — 3D Spatial\nLevel 2 — 3D + 4D Schedule\nLevel 3 — 3D + 4D + 5D Cost",
+      "reqd": 1,
+      "default": "Level 1 — 3D Spatial"
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "client",
+      "label": "Client",
+      "fieldtype": "Link",
+      "options": "Customer",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "project_manager",
+      "label": "Project Manager",
+      "fieldtype": "Link",
+      "options": "User"
+    },
+    {
+      "fieldname": "linked_project",
+      "label": "Linked ERPNext Project",
+      "fieldtype": "Link",
+      "options": "Project",
+      "description": "Link to the ERPNext Project DocType for task/timesheet integration"
+    },
+    {
+      "fieldname": "sec_dates",
+      "label": "Project Dates",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "start_date",
+      "label": "Start Date",
+      "fieldtype": "Date",
+      "reqd": 1
+    },
+    {
+      "fieldname": "end_date",
+      "label": "Expected Completion",
+      "fieldtype": "Date"
+    },
+    {
+      "fieldname": "col_break_dates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "contract_value",
+      "label": "Contract Value (AUD)",
+      "fieldtype": "Currency"
+    },
+    {
+      "fieldname": "project_type",
+      "label": "Project Type",
+      "fieldtype": "Select",
+      "options": "\nCommercial\nResidential\nInfrastructure\nIndustrial\nMixed Use\nRefurbishment"
+    },
+    {
+      "fieldname": "sec_location",
+      "label": "Location",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "address_line1",
+      "label": "Address",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "suburb",
+      "label": "Suburb",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "col_break_loc",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "state",
+      "label": "State",
+      "fieldtype": "Select",
+      "options": "\nNSW\nVIC\nQLD\nWA\nSA\nTAS\nACT\nNT",
+      "default": "WA"
+    },
+    {
+      "fieldname": "postcode",
+      "label": "Postcode",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "sec_description",
+      "label": "Description & Notes",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "project_description",
+      "label": "Project Description",
+      "fieldtype": "Text Editor"
+    },
+    {
+      "fieldname": "sec_models",
+      "label": "BIM Models",
+      "fieldtype": "Section Break",
+      "description": "Models attached to this project — managed via the BIM Model DocType"
+    },
+    {
+      "fieldname": "model_summary_html",
+      "label": "Model Summary",
+      "fieldtype": "HTML",
+      "options": "<div id=\"bim-project-model-summary\" style=\"padding:10px;color:#8d99a6;font-style:italic;\">Save this record to view linked BIM models.</div>"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    }
+  ]
+}

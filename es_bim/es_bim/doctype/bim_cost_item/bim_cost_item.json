@@ -1,0 +1,242 @@
+{
+  "name": "BIM Cost Item",
+  "search_fields": "description,bim_project,cost_category,status",
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "autoname": "naming_series:",
+  "naming_rule": "By \"Naming Series\" field",
+  "title_field": "description",
+  "sort_field": "cost_category",
+  "sort_order": "ASC",
+  "description": "A 5D BIM cost record linking a quantity take-off line to an ERPNext Item, with budgeted and actual cost tracking against the 3D model.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "BIM-CST-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "description",
+      "label": "Description",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "bim_project",
+      "label": "BIM Project",
+      "fieldtype": "Link",
+      "options": "BIM Project",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "cost_category",
+      "label": "Cost Category",
+      "fieldtype": "Select",
+      "options": "Preliminaries\nCivil & Earthworks\nStructural\nArchitectural\nFaçade\nMechanical\nElectrical\nPlumbing\nExternal Works\nContingency\nProfessional Fees",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Estimate\nBudget Approved\nCommitted\nActual\nVariation",
+      "reqd": 1,
+      "default": "Estimate",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "sec_qto",
+      "label": "Quantity Take-Off",
+      "fieldtype": "Section Break",
+      "description": "Quantities sourced from IFC model properties or manual entry"
+    },
+    {
+      "fieldname": "item_code",
+      "label": "Item / Trade Package",
+      "fieldtype": "Link",
+      "options": "Item",
+      "description": "Link to ERPNext Item for procurement and BOM integration"
+    },
+    {
+      "fieldname": "uom",
+      "label": "UOM",
+      "fieldtype": "Link",
+      "options": "UOM",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "col_break_qto",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "budgeted_qty",
+      "label": "Budgeted Qty",
+      "fieldtype": "Float",
+      "reqd": 1,
+      "description": "Quantity from BIM model take-off or estimate"
+    },
+    {
+      "fieldname": "actual_qty",
+      "label": "Actual Qty",
+      "fieldtype": "Float",
+      "default": "0",
+      "description": "Confirmed quantity from site measurement or delivery"
+    },
+    {
+      "fieldname": "ifc_source",
+      "label": "IFC Source",
+      "fieldtype": "Select",
+      "options": "\nModel Take-Off\nManual Entry\nExternal Estimate",
+      "default": "Manual Entry",
+      "description": "How the quantity was derived"
+    },
+    {
+      "fieldname": "sec_cost",
+      "label": "Cost",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "unit_rate",
+      "label": "Unit Rate (AUD)",
+      "fieldtype": "Currency",
+      "reqd": 1
+    },
+    {
+      "fieldname": "budgeted_cost",
+      "label": "Budgeted Cost (AUD)",
+      "fieldtype": "Currency",
+      "description": "Auto-calculated: Budgeted Qty × Unit Rate",
+      "read_only": 1
+    },
+    {
+      "fieldname": "col_break_cost",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "actual_cost",
+      "label": "Actual Cost (AUD)",
+      "fieldtype": "Currency",
+      "default": "0",
+      "description": "Committed or invoiced cost to date"
+    },
+    {
+      "fieldname": "variance",
+      "label": "Variance (AUD)",
+      "fieldtype": "Currency",
+      "description": "Auto-calculated: Actual Cost − Budgeted Cost. Positive = over budget.",
+      "read_only": 1
+    },
+    {
+      "fieldname": "variation_ref",
+      "label": "Variation Reference",
+      "fieldtype": "Data",
+      "description": "Site instruction or variation order number if applicable"
+    },
+    {
+      "fieldname": "sec_links",
+      "label": "Project Links",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "linked_schedule_item",
+      "label": "Linked Schedule Item",
+      "fieldtype": "Link",
+      "options": "BIM Schedule Item",
+      "description": "4D link — associates cost with a construction activity"
+    },
+    {
+      "fieldname": "linked_bom",
+      "label": "Linked BOM",
+      "fieldtype": "Link",
+      "options": "BOM",
+      "description": "ERPNext Bill of Materials for this trade package"
+    },
+    {
+      "fieldname": "col_break_links",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "ifc_element_guids",
+      "label": "IFC Element GUIDs",
+      "fieldtype": "Small Text",
+      "description": "Space or newline-separated IFC GlobalIds for model highlighting"
+    },
+    {
+      "fieldname": "floor_levels",
+      "label": "Floor Levels",
+      "fieldtype": "Data",
+      "description": "e.g. B2, B1, L1-L6"
+    },
+    {
+      "fieldname": "sec_notes",
+      "label": "Notes",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "notes",
+      "label": "Notes",
+      "fieldtype": "Text Editor"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM User",
+      "read": 1,
+      "report": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    }
+  ]
+}

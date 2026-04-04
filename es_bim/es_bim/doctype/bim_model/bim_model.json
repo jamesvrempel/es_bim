@@ -1,0 +1,180 @@
+{
+  "name": "BIM Model",
+  "search_fields": "model_name,bim_project,discipline,status",
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "autoname": "naming_series:",
+  "naming_rule": "By \"Naming Series\" field",
+  "title_field": "model_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "description": "A BIM Model record stores an uploaded IFC file, its converted XKT file for xeokit viewing, and metadata about the model discipline and version.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "BIM-MDL-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "model_name",
+      "label": "Model Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "bim_project",
+      "label": "BIM Project",
+      "fieldtype": "Link",
+      "options": "BIM Project",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "discipline",
+      "label": "Discipline",
+      "fieldtype": "Select",
+      "options": "Architectural\nStructural\nMechanical\nElectrical\nPlumbing\nCivil\nLandscape\nFederated",
+      "reqd": 1,
+      "default": "Architectural",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Draft\nProcessing\nReady\nError\nArchived",
+      "reqd": 1,
+      "default": "Draft",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "sec_files",
+      "label": "Model Files",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "ifc_file",
+      "label": "IFC File",
+      "fieldtype": "Attach",
+      "description": "Upload the IFC 2x3 or IFC 4.x file. On save a background job will convert it to XKT format for the 3D viewer."
+    },
+    {
+      "fieldname": "version",
+      "label": "Version",
+      "fieldtype": "Data",
+      "default": "1.0"
+    },
+    {
+      "fieldname": "col_break_files",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "xkt_file",
+      "label": "XKT File (Auto-generated)",
+      "fieldtype": "Attach",
+      "description": "Populated automatically after IFC → XKT conversion. Do not edit manually.",
+      "read_only": 1
+    },
+    {
+      "fieldname": "conversion_log",
+      "label": "Conversion Log",
+      "fieldtype": "Small Text",
+      "description": "Output from the ifc2xkt conversion job",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sec_meta",
+      "label": "Model Metadata",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "ifc_schema",
+      "label": "IFC Schema",
+      "fieldtype": "Select",
+      "options": "\nIFC2X3\nIFC4\nIFC4X3",
+      "description": "Detected automatically after upload if left blank"
+    },
+    {
+      "fieldname": "coordinate_system",
+      "label": "Coordinate System",
+      "fieldtype": "Data",
+      "description": "e.g. GDA2020 / MGA Zone 50"
+    },
+    {
+      "fieldname": "col_break_meta",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "is_default",
+      "label": "Default Model for Project",
+      "fieldtype": "Check",
+      "default": "0",
+      "description": "Only one model per project can be the default"
+    },
+    {
+      "fieldname": "federation_group",
+      "label": "Federation Group",
+      "fieldtype": "Data",
+      "description": "Group tag for multi-model federation (e.g. Structure+MEP)"
+    },
+    {
+      "fieldname": "uploaded_by",
+      "label": "Uploaded By",
+      "fieldtype": "Link",
+      "options": "User",
+      "default": "__user",
+      "read_only": 1
+    },
+    {
+      "fieldname": "sec_viewer",
+      "label": "3D Model Viewer",
+      "fieldtype": "Section Break",
+      "description": "xeokit WebGL viewer — loads the XKT file when available, otherwise shows the upload prompt."
+    },
+    {
+      "fieldname": "xeokit_viewer_html",
+      "label": "3D Viewer",
+      "fieldtype": "HTML",
+      "options": "<div id=\"bim-viewer-root\" style=\"width:100%;height:680px;border:1px solid #ddd;border-radius:6px;overflow:hidden;background:#1a1a2e;position:relative;\">\n  <div id=\"bim-viewer-canvas-container\" style=\"width:100%;height:100%;\">\n    <canvas id=\"bim-canvas\" style=\"width:100%;height:100%;display:block;\"></canvas>\n  </div>\n  <div id=\"bim-viewer-toolbar\" style=\"position:absolute;top:12px;left:12px;z-index:10;display:flex;\">\n    <button title=\"Fit All\" style=\"background:rgba(30,30,50,0.85);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:5px 10px;cursor:pointer;font-size:12px;\">Fit All</button>\n    <button title=\"X-Ray\" style=\"background:rgba(30,30,50,0.85);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:5px 10px;cursor:pointer;font-size:12px;\">X-Ray</button>\n    <button title=\"Section Plane\" style=\"background:rgba(30,30,50,0.85);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:5px 10px;cursor:pointer;font-size:12px;\">Section</button>\n    <button title=\"Reset\" style=\"background:rgba(30,30,50,0.85);color:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:5px 10px;cursor:pointer;font-size:12px;\">Reset</button>\n  </div>\n  <div id=\"bim-viewer-status\" style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#aaa;font-size:14px;font-family:sans-serif;text-align:center;pointer-events:none;\">\n    <div id=\"bim-status-text\">Loading viewer...</div>\n  </div>\n  <div id=\"bim-element-info\" style=\"position:absolute;bottom:12px;right:12px;background:rgba(20,20,40,0.9);color:#fff;border-radius:6px;padding:10px 14px;font-size:12px;font-family:sans-serif;max-width:280px;display:none;\">\n    <div style=\"font-weight:bold;margin-bottom:6px;\" id=\"bim-el-name\">Element</div>\n    <div id=\"bim-el-details\"></div>\n  </div>\n</div>"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    }
+  ]
+}

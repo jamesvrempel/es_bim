@@ -1,0 +1,210 @@
+{
+  "name": "BIM Schedule Item",
+  "search_fields": "task_name,bim_project,wbs_code,status",
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "autoname": "naming_series:",
+  "naming_rule": "By \"Naming Series\" field",
+  "title_field": "task_name",
+  "sort_field": "sequence_order",
+  "sort_order": "ASC",
+  "description": "A 4D construction schedule item. Links construction activities to 3D model elements for visual progress tracking and sequence simulation.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "BIM-SCH-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "task_name",
+      "label": "Task Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "bim_project",
+      "label": "BIM Project",
+      "fieldtype": "Link",
+      "options": "BIM Project",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "wbs_code",
+      "label": "WBS Code",
+      "fieldtype": "Data",
+      "description": "Work Breakdown Structure code e.g. 1.2.3",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "sequence_order",
+      "label": "Sequence Order",
+      "fieldtype": "Int",
+      "default": "0",
+      "description": "Controls the order in the Gantt chart"
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Not Started\nIn Progress\nComplete\nOverdue\nOn Hold",
+      "reqd": 1,
+      "default": "Not Started",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "sec_dates",
+      "label": "Schedule Dates",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "planned_start",
+      "label": "Planned Start",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "planned_end",
+      "label": "Planned End",
+      "fieldtype": "Date",
+      "reqd": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "col_break_dates",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "actual_start",
+      "label": "Actual Start",
+      "fieldtype": "Date"
+    },
+    {
+      "fieldname": "actual_end",
+      "label": "Actual End",
+      "fieldtype": "Date"
+    },
+    {
+      "fieldname": "progress_pct",
+      "label": "Progress %",
+      "fieldtype": "Percent",
+      "default": "0",
+      "description": "0–100% completion. Drives the colour overlay on the 3D model."
+    },
+    {
+      "fieldname": "sec_links",
+      "label": "Planning Links",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "task_type",
+      "label": "Task Type",
+      "fieldtype": "Select",
+      "options": "Construction\nProcurement\nInspection\nHandover\nMilestone\nDesign",
+      "default": "Construction"
+    },
+    {
+      "fieldname": "trade",
+      "label": "Trade / Discipline",
+      "fieldtype": "Select",
+      "options": "\nCivil\nStructural\nArchitectural\nMechanical\nElectrical\nPlumbing\nFaçade\nFinishes\nExternal Works"
+    },
+    {
+      "fieldname": "col_break_links",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "predecessor_tasks",
+      "label": "Predecessor Tasks",
+      "fieldtype": "Small Text",
+      "description": "Comma-separated BIM Schedule Item names that must complete before this task starts"
+    },
+    {
+      "fieldname": "linked_erpnext_task",
+      "label": "Linked ERPNext Task",
+      "fieldtype": "Link",
+      "options": "Task",
+      "description": "Optional link to an ERPNext Project task for timesheet/resource integration"
+    },
+    {
+      "fieldname": "sec_elements",
+      "label": "Linked IFC Elements",
+      "fieldtype": "Section Break",
+      "description": "Add the IFC element GUIDs that will be colour-coded on the 3D model when this task is active."
+    },
+    {
+      "fieldname": "elements",
+      "label": "IFC Elements",
+      "fieldtype": "Table",
+      "options": "BIM Schedule Element"
+    },
+    {
+      "fieldname": "sec_notes",
+      "label": "Notes",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "description",
+      "label": "Description",
+      "fieldtype": "Text Editor"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM User",
+      "read": 1,
+      "report": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    }
+  ]
+}

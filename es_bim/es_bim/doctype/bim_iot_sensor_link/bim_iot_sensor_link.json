@@ -1,0 +1,208 @@
+{
+  "name": "BIM IoT Sensor Link",
+  "search_fields": "link_name,bim_project,sensor_type,ifc_guid",
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "autoname": "naming_series:",
+  "naming_rule": "By \"Naming Series\" field",
+  "title_field": "link_name",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "description": "Links a Teltonika beacon or GPS vehicle to a specific IFC element for site monitoring. Sensor readings from Beacon Sensor Log are surfaced on the 3D model.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "BIM-IOT-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "link_name",
+      "label": "Link Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "bim_project",
+      "label": "BIM Project",
+      "fieldtype": "Link",
+      "options": "BIM Project",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "sensor_type",
+      "label": "Sensor Type",
+      "fieldtype": "Select",
+      "options": "Beacon (Teltonika EYE)\nGPS Tracker (FMM)\nEnvironmental Sensor\nStructural Monitor\nEnergy Meter",
+      "reqd": 1,
+      "default": "Beacon (Teltonika EYE)",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "active",
+      "label": "Active",
+      "fieldtype": "Check",
+      "default": "1",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "sec_sensor",
+      "label": "Sensor Device",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "vehicle_beacon",
+      "label": "Beacon / Vehicle",
+      "fieldtype": "Link",
+      "options": "Vehicle",
+      "reqd": 1,
+      "description": "Link to the Vehicle DocType record (covers both GPS trackers and EYE beacons)"
+    },
+    {
+      "fieldname": "beacon_mac",
+      "label": "Beacon MAC Address",
+      "fieldtype": "Data",
+      "description": "MAC address for direct beacon identification in Beacon Sensor Log"
+    },
+    {
+      "fieldname": "col_break_sensor",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "monitoring_purpose",
+      "label": "Monitoring Purpose",
+      "fieldtype": "Select",
+      "options": "\nConcrete Curing Temperature\nFormwork Pressure\nStructural Settlement\nAmbient Conditions\nAsset Location Tracking\nAccess Control\nVibration Monitoring\nMoisture / Humidity"
+    },
+    {
+      "fieldname": "alert_threshold_temp",
+      "label": "Temperature Alert Threshold (°C)",
+      "fieldtype": "Float",
+      "description": "Trigger alert if temperature exceeds this value. Leave blank to disable."
+    },
+    {
+      "fieldname": "sec_element",
+      "label": "Linked IFC Element",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "ifc_guid",
+      "label": "IFC Element GUID",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "description": "The IFC GlobalId of the building element this sensor monitors"
+    },
+    {
+      "fieldname": "element_description",
+      "label": "Element Description",
+      "fieldtype": "Data",
+      "description": "Human-readable description, e.g. ‘Level 3 Column C14’"
+    },
+    {
+      "fieldname": "col_break_el",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "floor_level",
+      "label": "Floor Level",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "bim_model",
+      "label": "BIM Model",
+      "fieldtype": "Link",
+      "options": "BIM Model",
+      "description": "The model containing this element"
+    },
+    {
+      "fieldname": "sec_last",
+      "label": "Last Reading",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "last_temperature",
+      "label": "Last Temperature (°C)",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "last_humidity",
+      "label": "Last Humidity (%)",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "last_battery",
+      "label": "Last Battery (V)",
+      "fieldtype": "Float",
+      "read_only": 1
+    },
+    {
+      "fieldname": "col_break_last",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "last_reading_datetime",
+      "label": "Last Reading",
+      "fieldtype": "Datetime",
+      "read_only": 1
+    },
+    {
+      "fieldname": "last_status",
+      "label": "Sensor Status",
+      "fieldtype": "Select",
+      "options": "\nOnline\nOffline\nAlert\nUnknown",
+      "default": "Unknown",
+      "read_only": 1
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    }
+  ]
+}

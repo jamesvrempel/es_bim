@@ -1,0 +1,149 @@
+{
+  "name": "BIM Floor Plan",
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "autoname": "naming_series:",
+  "naming_rule": "By \"Naming Series\" field",
+  "title_field": "plan_name",
+  "sort_field": "level_order",
+  "sort_order": "ASC",
+  "description": "Stores a 2D SVG floor plan for a specific level of a BIM Project. Used to overlay sensor positions, issue pins, and element highlights.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "BIM-FLP-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "plan_name",
+      "label": "Plan Name",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "bim_project",
+      "label": "BIM Project",
+      "fieldtype": "Link",
+      "options": "BIM Project",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "level_name",
+      "label": "Level / Floor",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "description": "e.g. Level 3, Basement 1, Roof",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "level_order",
+      "label": "Level Order",
+      "fieldtype": "Int",
+      "default": "0",
+      "description": "Sort order from bottom (0=lowest basement)"
+    },
+    {
+      "fieldname": "sec_geo",
+      "label": "Geospatial Reference",
+      "fieldtype": "Section Break",
+      "description": "Maps SVG pixel coordinates to real-world coordinates for overlaying on OpenStreetMap"
+    },
+    {
+      "fieldname": "origin_latitude",
+      "label": "Origin Latitude",
+      "fieldtype": "Float",
+      "description": "Real-world latitude of SVG origin (0,0)"
+    },
+    {
+      "fieldname": "origin_longitude",
+      "label": "Origin Longitude",
+      "fieldtype": "Float",
+      "description": "Real-world longitude of SVG origin (0,0)"
+    },
+    {
+      "fieldname": "col_break_geo",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "scale_meters_per_px",
+      "label": "Scale (m/px)",
+      "fieldtype": "Float",
+      "default": "0.1",
+      "description": "How many real-world metres each SVG pixel represents"
+    },
+    {
+      "fieldname": "rotation_deg",
+      "label": "Rotation (degrees)",
+      "fieldtype": "Float",
+      "default": "0",
+      "description": "Clockwise rotation of the plan from true north"
+    },
+    {
+      "fieldname": "sec_svg",
+      "label": "Floor Plan SVG",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "svg_file",
+      "label": "SVG File",
+      "fieldtype": "Attach",
+      "description": "Upload the floor plan as an SVG file"
+    },
+    {
+      "fieldname": "svg_inline",
+      "label": "Inline SVG",
+      "fieldtype": "Code",
+      "options": "HTML",
+      "description": "Paste SVG markup directly for inline rendering (used by the viewer if no file uploaded)"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    }
+  ]
+}

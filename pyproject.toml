@@ -1,0 +1,31 @@
+[project]
+name = "es_bim"
+version = "1.0.0"
+description = "ES Building Information Management — 3D, 4D & 5D BIM Module for ERPNext"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Enterprise Systems Australia", email = "info@enterprisesystems.com.au"}
+]
+keywords = ["frappe", "erpnext", "bim", "building information management", "construction"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Frappe",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+# IMPORTANT: Do NOT list frappe or erpnext here.
+# Adding frappe causes uv to fail with gunicorn URL dependency conflict.
+# Frappe apps declare required apps in hooks.py, not as pip dependencies.
+dependencies = []
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.module]
+name = "es_bim"
+
+[tool.black]
+line-length = 99

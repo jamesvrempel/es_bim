@@ -1,0 +1,44 @@
+{
+  "name": "BIM Schedule Element",
+  "istable": 1,
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "description": "Child table — links one or more IFC element GUIDs to a BIM Schedule Item for 4D model colour-coding.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "ifc_guid",
+      "label": "IFC Element GUID",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "description": "The GlobalId of the IFC element (e.g. 0ABC123$...)",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "element_name",
+      "label": "Element Name",
+      "fieldtype": "Data",
+      "description": "Human-readable name pulled from the model (optional, for reference)",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "ifc_type",
+      "label": "IFC Type",
+      "fieldtype": "Data",
+      "description": "e.g. IfcWall, IfcColumn, IfcSlab",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "floor_level",
+      "label": "Floor / Level",
+      "fieldtype": "Data",
+      "in_list_view": 1
+    }
+  ],
+  "permissions": []
+}

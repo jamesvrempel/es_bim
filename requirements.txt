@@ -1,0 +1,5 @@
+# No pip dependencies.
+# Frappe/ERPNext are managed by bench, not pip.
+#
+# Optional — for server-side IFC quantity take-off:
+#   pip install ifcopenshell --break-system-packages

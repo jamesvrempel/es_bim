@@ -1,0 +1,106 @@
+[
+  {
+    "doctype": "Workspace",
+    "name": "ES BIM",
+    "title": "ES BIM",
+    "module": "frappe",
+    "public": 1,
+    "is_hidden": 0,
+    "icon": "building",
+    "indicator_color": "blue",
+    "content": "[{\"id\": \"bim_hdr\", \"type\": \"header\", \"data\": {\"text\": \"<span class='h4'>ES Building Information Management</span>\", \"col\": 12}}, {\"id\": \"bim_sp1\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"bim_sc1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"BIM Projects\", \"col\": 3}}, {\"id\": \"bim_sc2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"BIM Models\", \"col\": 3}}, {\"id\": \"bim_sc3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Cost Items\", \"col\": 3}}, {\"id\": \"bim_sc4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"5D Budget vs Actual\", \"col\": 3}}, {\"id\": \"bim_sc5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Issues\", \"col\": 3}}, {\"id\": \"bim_sc6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"IoT Links\", \"col\": 3}}, {\"id\": \"bim_sc7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Floor Plans\", \"col\": 3}}, {\"id\": \"bim_sp2\", \"type\": \"spacer\", \"data\": {\"col\": 12}}, {\"id\": \"bim_card\", \"type\": \"card\", \"data\": {\"card_name\": \"BIM Core\", \"col\": 12}}]",
+    "shortcuts": [
+      {
+        "label": "BIM Projects",
+        "type": "DocType",
+        "link_to": "BIM Project",
+        "icon": "project"
+      },
+      {
+        "label": "BIM Models",
+        "type": "DocType",
+        "link_to": "BIM Model",
+        "icon": "cube"
+      },
+      {
+        "label": "Cost Items",
+        "type": "DocType",
+        "link_to": "BIM Cost Item",
+        "icon": "accounting"
+      },
+      {
+        "label": "5D Budget vs Actual",
+        "type": "Dashboard",
+        "link_to": "BIM 5D Budget vs Actual",
+        "icon": "dashboard"
+      },
+      {
+        "label": "Issues",
+        "type": "DocType",
+        "link_to": "BIM Issue",
+        "icon": "issues"
+      },
+      {
+        "label": "IoT Links",
+        "type": "DocType",
+        "link_to": "BIM IoT Sensor Link",
+        "icon": "sensor"
+      },
+      {
+        "label": "Floor Plans",
+        "type": "DocType",
+        "link_to": "BIM Floor Plan",
+        "icon": "map"
+      }
+    ],
+    "links": [
+      {
+        "label": "BIM Core",
+        "type": "Card Break",
+        "is_query_report": 0
+      },
+      {
+        "label": "BIM Project",
+        "type": "Link",
+        "link_type": "DocType",
+        "link_to": "BIM Project"
+      },
+      {
+        "label": "BIM Model",
+        "type": "Link",
+        "link_type": "DocType",
+        "link_to": "BIM Model"
+      },
+      {
+        "label": "BIM Schedule Item",
+        "type": "Link",
+        "link_type": "DocType",
+        "link_to": "BIM Schedule Item"
+      },
+      {
+        "label": "BIM Cost Item",
+        "type": "Link",
+        "link_type": "DocType",
+        "link_to": "BIM Cost Item"
+      },
+      {
+        "label": "BIM Issue",
+        "type": "Link",
+        "link_type": "DocType",
+        "link_to": "BIM Issue"
+      },
+      {
+        "label": "BIM IoT Sensor Link",
+        "type": "Link",
+        "link_type": "DocType",
+        "link_to": "BIM IoT Sensor Link"
+      },
+      {
+        "label": "BIM Floor Plan",
+        "type": "Link",
+        "link_type": "DocType",
+        "link_to": "BIM Floor Plan"
+      }
+    ]
+  }
+]

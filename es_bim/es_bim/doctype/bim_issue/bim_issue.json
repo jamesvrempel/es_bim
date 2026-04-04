@@ -1,0 +1,276 @@
+{
+  "name": "BIM Issue",
+  "search_fields": "issue_title,bim_project,issue_type,status,assigned_to",
+  "editable_grid": 1,
+  "module": "ES BIM",
+  "autoname": "naming_series:",
+  "naming_rule": "By \"Naming Series\" field",
+  "title_field": "issue_title",
+  "sort_field": "creation",
+  "sort_order": "DESC",
+  "description": "BCF-compatible BIM issue for clash detection, design queries, and field observations. Stores a viewpoint snapshot, linked IFC elements, and resolution workflow.",
+  "allow_rename": 1,
+  "custom": 1,
+  "doctype": "DocType",
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "label": "Series",
+      "fieldtype": "Select",
+      "options": "BIM-ISS-.YYYY.-.####",
+      "reqd": 1
+    },
+    {
+      "fieldname": "issue_title",
+      "label": "Issue Title",
+      "fieldtype": "Data",
+      "reqd": 1,
+      "bold": 1,
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "bim_project",
+      "label": "BIM Project",
+      "fieldtype": "Link",
+      "options": "BIM Project",
+      "reqd": 1,
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "col_break_1",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "issue_type",
+      "label": "Issue Type",
+      "fieldtype": "Select",
+      "options": "Clash\nDesign Query\nField Observation\nRFI\nNon-Conformance\nSafety Hazard\nQuality Hold",
+      "reqd": 1,
+      "default": "Clash",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "priority",
+      "label": "Priority",
+      "fieldtype": "Select",
+      "options": "Critical\nHigh\nMedium\nLow",
+      "reqd": 1,
+      "default": "Medium",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "status",
+      "label": "Status",
+      "fieldtype": "Select",
+      "options": "Open\nIn Review\nResolved\nClosed\nWont Fix",
+      "reqd": 1,
+      "default": "Open",
+      "in_list_view": 1,
+      "in_standard_filter": 1
+    },
+    {
+      "fieldname": "sec_assignment",
+      "label": "Assignment",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "assigned_to",
+      "label": "Assigned To",
+      "fieldtype": "Link",
+      "options": "User",
+      "in_list_view": 1
+    },
+    {
+      "fieldname": "due_date",
+      "label": "Due Date",
+      "fieldtype": "Date"
+    },
+    {
+      "fieldname": "col_break_assign",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "created_by_role",
+      "label": "Created By Role",
+      "fieldtype": "Select",
+      "options": "\nArchitect\nStructural Engineer\nMEP Engineer\nContractor\nProject Manager\nClient\nBIM Manager"
+    },
+    {
+      "fieldname": "discipline",
+      "label": "Discipline",
+      "fieldtype": "Select",
+      "options": "\nArchitectural\nStructural\nMechanical\nElectrical\nPlumbing\nFaçade\nCivil\nCross-Discipline"
+    },
+    {
+      "fieldname": "sec_location",
+      "label": "Model Location",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "bim_model",
+      "label": "BIM Model",
+      "fieldtype": "Link",
+      "options": "BIM Model",
+      "description": "Primary model where the issue was identified"
+    },
+    {
+      "fieldname": "floor_level",
+      "label": "Floor / Level",
+      "fieldtype": "Data"
+    },
+    {
+      "fieldname": "col_break_loc",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "clash_element_a_guid",
+      "label": "Element A GUID",
+      "fieldtype": "Data",
+      "description": "IFC GlobalId of first clashing element"
+    },
+    {
+      "fieldname": "clash_element_b_guid",
+      "label": "Element B GUID",
+      "fieldtype": "Data",
+      "description": "IFC GlobalId of second clashing element (for clash issues)"
+    },
+    {
+      "fieldname": "sec_bcf",
+      "label": "BCF Viewpoint",
+      "fieldtype": "Section Break",
+      "description": "Camera position and orientation for BCF-compatible viewpoint export"
+    },
+    {
+      "fieldname": "bcf_camera_x",
+      "label": "Camera X",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "bcf_camera_y",
+      "label": "Camera Y",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "bcf_camera_z",
+      "label": "Camera Z",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "col_break_bcf",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "bcf_target_x",
+      "label": "Target X",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "bcf_target_y",
+      "label": "Target Y",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "bcf_target_z",
+      "label": "Target Z",
+      "fieldtype": "Float"
+    },
+    {
+      "fieldname": "bcf_viewpoint_json",
+      "label": "BCF Viewpoint JSON",
+      "fieldtype": "Code",
+      "options": "JSON",
+      "description": "Full BCF 2.1 viewpoint JSON including components visibility and clipping planes"
+    },
+    {
+      "fieldname": "sec_resolution",
+      "label": "Resolution",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "resolution_note",
+      "label": "Resolution Note",
+      "fieldtype": "Text Editor"
+    },
+    {
+      "fieldname": "resolved_date",
+      "label": "Resolved Date",
+      "fieldtype": "Date",
+      "read_only": 1
+    },
+    {
+      "fieldname": "col_break_res",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "linked_schedule_item",
+      "label": "Linked Schedule Item",
+      "fieldtype": "Link",
+      "options": "BIM Schedule Item"
+    },
+    {
+      "fieldname": "linked_cost_item",
+      "label": "Linked Cost Item",
+      "fieldtype": "Link",
+      "options": "BIM Cost Item"
+    },
+    {
+      "fieldname": "sec_description",
+      "label": "Description",
+      "fieldtype": "Section Break"
+    },
+    {
+      "fieldname": "description",
+      "label": "Description",
+      "fieldtype": "Text Editor"
+    }
+  ],
+  "permissions": [
+    {
+      "role": "System Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "delete": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM Manager",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "BIM User",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    },
+    {
+      "role": "All",
+      "read": 1,
+      "write": 1,
+      "create": 1,
+      "report": 1,
+      "export": 1,
+      "share": 1,
+      "print": 1,
+      "email": 1
+    }
+  ]
+}
